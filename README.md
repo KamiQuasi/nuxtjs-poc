@@ -2,6 +2,10 @@
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+## Developer Sandbox
+
+Running on the Developer Sandbox is easy.
+
 ## Setup
 
 Make sure to install the dependencies:
