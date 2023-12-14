@@ -1,3 +1,36 @@
+schemaVersion: 2.1.0
+metadata:
+  description: Nuxt.js is the backbone of your Vue.js project, giving structure to
+    build your project with confidence while keeping flexibility. Its goal is to help
+    Vue developers take advantage of top-notch technologies, fast, easy and in an
+    organized way.
+  displayName: Nuxt.js Proof of Concept
+  icon: https://raw.githubusercontent.com/devfile-samples/devfile-stack-icons/main/nuxt-js.svg
+  language: TypeScript
+  name: nuxtjs-poc-app
+  projectType: Nuxt.js
+  provider: Red Hat
+  tags:
+  - Node.js
+  - Nuxt.js
+  version: 1.0.3
+components:
+- name: runtime
+  image:
+    imageName: nuxtjs-poc-image:latest
+    autoBuild: true
+    dockerfile:
+      uri: ./Containerfile
+      buildContext: .
+      rootRequired: false
+- container:
+    endpoints:
+    - name: port-3000-tcp
+      protocol: tcp
+      targetPort: 3000
+    image: nuxtjs-poc-image:latest
+    memoryLimit: 1024Mi
+  name: server
 commands:
 - exec:
     commandLine: npm install
@@ -16,47 +49,3 @@ commands:
     hotReloadCapable: true
     workingDir: ${PROJECT_SOURCE}
   id: run
-components:
-- name: outerloop-build
-  image:
-    imageName: nuxtjs-poc-image:latest
-    autoBuild: true
-    dockerfile:
-      uri: Containerfile
-      buildContext: .
-      rootRequired: false
-- container:
-    args:
-    - tail
-    - -f
-    - /dev/null
-    endpoints:
-    - name: port-3000-tcp
-      protocol: tcp
-      targetPort: 3000
-    image: nuxtjs-poc-image:latest
-    memoryLimit: 1024Mi
-  name: runtime
-metadata:
-  description: Nuxt.js is the backbone of your Vue.js project, giving structure to
-    build your project with confidence while keeping flexibility. Its goal is to help
-    Vue developers take advantage of top-notch technologies, fast, easy and in an
-    organized way.
-  displayName: Nuxt.js
-  icon: https://raw.githubusercontent.com/devfile-samples/devfile-stack-icons/main/nuxt-js.svg
-  language: TypeScript
-  name: nuxtjs-poc-app
-  projectType: Nuxt.js
-  provider: Red Hat
-  tags:
-  - Node.js
-  - Nuxt.js
-  version: 1.0.3
-schemaVersion: 2.1.0
-starterProjects:
-- git:
-    checkoutFrom:
-      revision: main
-    remotes:
-      origin: https://github.com/devfile-samples/devfile-stack-nodejs-nuxtjs.git
-  name: nodejs-nuxtjs-starter
