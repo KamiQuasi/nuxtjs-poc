@@ -17,6 +17,14 @@ commands:
     workingDir: ${PROJECT_SOURCE}
   id: run
 components:
+- name: outerloop-build
+  image:
+    imageName: nuxtjs-poc-image:latest
+    autoBuild: true
+    dockerfile:
+      uri: Containerfile
+      buildContext: .
+      rootRequired: false
 - container:
     args:
     - tail
