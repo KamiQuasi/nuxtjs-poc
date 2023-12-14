@@ -34,7 +34,7 @@ components:
     - name: port-3000-tcp
       protocol: tcp
       targetPort: 3000
-    image: registry.access.redhat.com/ubi8/nodejs-16:1-139
+    image: nuxtjs-poc-image:latest
     memoryLimit: 1024Mi
   name: runtime
 metadata:
